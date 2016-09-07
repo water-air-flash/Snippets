@@ -1,0 +1,61 @@
+{
+	/*
+	 // Place your snippets for JavaScript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
+	 // Example:
+	 "Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	}
+var SPECIAL_CHARS_REGEXP = /([:\-_]+(.))/g;
+var MOZ_HACK_REGEXP = /^moz([A-Z])/;
+  function camelCase(name) {
+  return name.
+    replace(SPECIAL_CHARS_REGEXP, function(_, separator, letter, offset) {
+      return offset ? letter.toUpperCase() : letter;
+    }).
+    replace(MOZ_HACK_REGEXP, 'Moz$1');
+}
+*/
+	"camelCase": {
+		"prefix": "zcamelCase",
+		"body": [
+			"var SPECIAL_CHARS_REGEXP = /([:\\-_]+(.))/g;\nvar MOZ_HACK_REGEXP = /^moz([A-Z])/;\n function camelCase(name) {\n return name.\n replace(SPECIAL_CHARS_REGEXP, function(_, separator, letter, offset) {\n return offset ? letter.toUpperCase() : letter;\n }).\n replace(MOZ_HACK_REGEXP, 'Moz$1');\n}"
+		]
+	},
+	"console.log(arguments)": {
+		"prefix": "zconsole",
+		"body": [
+			"console.log(arguments);"
+		]
+	},
+	"isUndefined": {
+		"prefix": "zisUndefined",
+		"body": [
+			"if(typeof value === 'undefined'){\n$1}"
+		]
+	},
+	"getText": {
+		"prefix": "zdgetText",
+		"body": [
+			" function getText(element, value) {\n if (typeof value === 'undefined') {\n var nodeType = element.nodeType;\n return (nodeType === 1 || nodeType === 3) ? element.textContent : '';\n }\n element.textContent = value;\n }"
+		]
+	},
+	"css": {
+		"prefix": "zdcss",
+		"body": [
+			"function css(element, name, value) {\n name = camelCase(name);\n if (typeof value === 'undefined') {\n return element.style[name];\n } else {\n element.style[name] = value;\n }\n }"
+		]
+	},
+	"prop": {
+		"prefix": "zdprop",
+		"body": [
+			"function prop(element, name, value) {\n if (typeof value === 'undefined') {\n return element[name];\n } else {\n element[name] = value;\n }\n }"
+		]
+	}
+}
